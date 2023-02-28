@@ -2,11 +2,17 @@
 'use strict';
 
 function aclean(arr) {
-    return arr.filter(
-        x => 1
-    );
+  let map = new Map();
+
+  for (let str of arr) {
+    let key = Array.from(str.toLowerCase()).sort().join('');
+    if (!map.has(key))
+      map.set(key, str);
+  }
+
+  return Array.from(map.values());
 }
   
 let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
   
-console.log( unique(strings) );
+console.log( aclean(arr) );
