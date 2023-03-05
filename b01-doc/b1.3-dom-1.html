@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>Пользователи:</div>
+    <ul>
+        <li>Джон</li>
+        <li>Пит</li>
+    </ul>
+    <div id="output_div"></div>
+
+    <script>
+        //let elem = document.body.children[0];
+        //let elem = document.body.children[1];
+        let elem = document.body.children[1].children[0];
+
+        let str = elem.tagName + ':<br>';
+        for (let key in elem) {
+            str += key + '=' + elem[key] + ';<br>';
+        }
+        document.getElementById('output_div').innerHTML = str;
+    </script>
+</body>
+</html>
+
