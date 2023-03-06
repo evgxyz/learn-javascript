@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ol id="myol">
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+    </ol>
+    
+    <script>
+        function clear(elem) {
+            while (elem.firstChild) {
+                elem.firstChild.remove();
+            }
+            // alert('elem.firstChild=' + elem.firstChild);
+        }
+        
+        elem = document.getElementById('myol');
+        clear(elem);
+    </script>
+</body>
+</html>
+

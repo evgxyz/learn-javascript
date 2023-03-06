@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let ol = document.createElement('ol');
+        document.body.append(ol);
+
+        while (true) {
+            let text = prompt('Введите текст', '');
+            if (!text) {
+                alert(text);
+                break;
+            }
+            let li = document.createElement('li');
+            li.textContent = text;
+            ol.append(li);
+        }
+    </script>
+</body>
+</html>
+

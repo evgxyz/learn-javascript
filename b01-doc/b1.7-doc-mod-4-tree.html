@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function createTree(node, data) {
+            let entries = Object.entries(data);
+
+            if (entries.length > 0) {
+                let newnode = document.createElement('ul');
+                for (let [key, val] of entries) {
+                    createTree(newnode, val);
+                }
+                node.append(newnode);
+            }
+        }
+
+        let data = {
+            "Рыбы": {
+                "форель": {},
+                "лосось": {}
+            },
+
+            "Деревья": {
+                "Огромные": {
+                    "секвойя": {},
+                    "дуб": {}
+                },
+
+                "Цветковые": {
+                    "яблоня": {},
+                    "магнолия": {}
+                }
+            }
+        };
+
+        let container = document.getElementById('container');
+        createTree(container, data); 
+    </script>
+</body>
+</html>
+
