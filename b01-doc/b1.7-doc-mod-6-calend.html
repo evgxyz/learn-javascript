@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+
+    <style>
+        .calendar table {
+          border-collapse: collapse;
+        }
+    
+        .calendar td, .calendar th {
+          border: 1px solid black;
+          padding: 0.3em;
+          text-align: center;
+          background-color: #FFFFFF;
+        }
+
+        .calendar th {
+          font-weight: bold;
+          background-color: #E6E6E6;
+        }
+    </style>
+</head>
+<body>
+    <div id="calendar" class="calendar"></div>
+
+    <script>
+        
+        function createCalendar(elem, year, month) {
+
+            month = month - 1; 
+            let d = new Date(year, month);
+
+            let table = '<table>';
+            
+            // head
+            table += '<thead>';      
+            table += `<tr><th colspan="7">${year}, ${monthName(month)}</th></tr>`;
+            
+            table += '<tr>';
+            for (let i = 0; i < 7; i++) 
+                table += `<th>${weekdayName(i)}</th>`;
+            table += '</tr>';
+            
+            table += '</thead>';
+
+            // tbody
+            table += '<body>';
+            
+            // first row
+            table += '<tr>';    
+            for (let i = 0, firstWeekday = weekday(d); i < firstWeekday; i++) {
+                table += `<td></td>`;
+            }
+
+            // add days
+            while (d.getMonth() == month) {
+                table += '<td>' + d.getDate() + '</td>';
+
+                if (weekday(d) == 6) {
+                    table += '</tr><tr>';
+                }
+
+                d.setDate(d.getDate() + 1);
+            }
+
+            // append last row
+            let i = weekday(d);
+            if ( i > 0 ) {
+                while (i < 7) {
+                    table += '<td></td>';
+                    i++;
+                }
+            }
+            table += '</tr>';
+
+            // close table
+            table += '</tbody></table>';
+
+            elem.innerHTML = table;
+
+            // sub functions
+            function weekday(date) {
+                let day = date.getDay();
+                return day > 0 ? day - 1 : 6;
+            }
+
+            function weekdayName(weekday) {
+                let daynames = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
+                return daynames[weekday];
+            }
+
+            function monthName(month) {
+                let monthnames = ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
+                return monthnames[month];
+            }
+        }
+
+        let calendar = document.getElementById('calendar');
+        createCalendar(calendar, 2023, 3);
+        
+    </script>
+</body>
+</html>
+

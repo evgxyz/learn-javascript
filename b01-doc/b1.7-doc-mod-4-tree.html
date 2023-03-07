@@ -6,16 +6,21 @@
     <title>Document</title>
 </head>
 <body>
-    <script>
-        function createTree(node, data) {
-            let entries = Object.entries(data);
 
+    <div id="container"></div>
+
+    <script>
+        function createTree(node, obj) {
+            let entries = Object.entries(obj);
             if (entries.length > 0) {
-                let newnode = document.createElement('ul');
+                let newlist = document.createElement('ul');
                 for (let [key, val] of entries) {
-                    createTree(newnode, val);
+                    let newitem = document.createElement('li');
+                    newitem.append(String(key));
+                    createTree(newitem, val);
+                    newlist.append(newitem);
                 }
-                node.append(newnode);
+                node.append(newlist);
             }
         }
 
@@ -40,6 +45,7 @@
 
         let container = document.getElementById('container');
         createTree(container, data); 
+        
     </script>
 </body>
 </html>

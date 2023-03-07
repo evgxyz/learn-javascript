@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <ul id="list">
+        <li>Животные
+            <ul>
+                <li>Млекопитающие
+                    <ul>
+                    <li>Коровы</li>
+                    <li>Ослы</li>
+                    <li>Собаки</li>
+                    <li>Тигры</li>
+                    </ul>
+                </li>
+                <li>Другие
+                    <ul>
+                    <li>Змеи</li>
+                    <li>Птицы</li>
+                    <li>Ящерицы</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>Рыбы
+            <ul>
+                <li>Аквариумные
+                    <ul>
+                    <li>Гуппи</li>
+                    <li>Скалярии</li>
+                    </ul>
+                </li>
+                <li>Морские
+                    <ul>
+                    <li>Морская форель</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <script>
+        
+        function numList(node) {
+            let items = [...node.children].filter( x => (x.tagName == 'LI') );
+
+            let nchildren = 0;
+            
+            for (let item of items) {
+                nchildren++;
+
+                let sublists = [...item.children].filter( 
+                    x => (x.tagName == 'UL' || x.tagName == 'OL') );
+                
+                let nch = 0;
+                for (let sublist of sublists) {
+                    nch += numList(sublist);
+                }
+                
+                if (nch > 0) {
+                    item.firstChild.data = item.firstChild.data + `[${nch}]`;
+                }
+
+                nchildren += nch;
+            }
+            
+            return nchildren;
+        }
+
+        let mainList = document.getElementById('list');
+        numList(mainList);
+        
+    </script>
+</body>
+</html>
+
