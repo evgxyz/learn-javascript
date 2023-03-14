@@ -3,35 +3,40 @@
 
 function throttle(func, ms) {
     let lock = false;
-    let waitingArgs = null;
+    let savedArgs = null;
+    let savedThis = null;
 
-    return function (...args) {
+    return function f(...args) {
+        savedArgs = args;
+        savedThis = this;
+        
         if (!lock) {
-            func.call(this, ...args);
             lock = true;
-
+            func.call(savedThis, ...savedArgs);
+            
             setTimeout(() => { 
-                if (waitingArgs) {
-                    func.call(this, ...waitingArgs);
-                    lock = true;
-                    waitingArgs = null;
-                    setTimeout(() => { lock = false; }, ms);
-                }
-                else
-                    lock = false; 
-            }, ms)
-        }
-        else {
-            waitingArgs = args;
+                lock = false; 
+                if (savedArgs) {
+                    f.call(savedThis, ...savedArgs);
+                    savedArgs = null;
+                    savedThis = null;
+                }    
+            }, ms);
         }
     }
 }
 
 function print(x) {
-    console.log(x);
+    console.log('arg=' + x + ', time=' + (unixTime() - startTime));
+}
+
+function unixTime() {
+    return (new Date()).getTime();
 }
 
 let printThr = throttle(print, 1000);
+
+let startTime = unixTime();
 
 printThr(1);
 printThr(2);
