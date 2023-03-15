@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+
+    <style>
+        #clock { 
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+        }
+        #clock .hours { color: red; }
+        #clock .minutes { color: green; }
+        #clock .seconds { color: blue; }
+    </style>
+</head>
+<body>
+    <script>
+        
+        let clockTimer;
+
+        function clockStart() {
+            showTime();
+            clockTimer = setInterval(showTime, 1000); 
+        }
+
+        function clockStop() {
+            clearInterval(clockTimer);
+        }
+
+        function showTime() {
+            let date = new Date();
+            let clockElem = document.getElementById('clock');
+            clockElem.querySelector('.hours').textContent = String(date.getHours()).padStart(2, '0');
+            clockElem.querySelector('.minutes').textContent = String(date.getMinutes()).padStart(2, '0');
+            clockElem.querySelector('.seconds').textContent = String(date.getSeconds()).padStart(2, '0');
+        }
+
+    </script>
+
+    <div id="clock">
+        <div class="tablo">
+            <span class="hours">hh</span>:<span class="minutes">mm</span>:<span class="seconds">ss</span>
+        </div>
+        <input type="button" onclick="clockStart()" value="Старт">
+        <input type="button" onclick="clockStop()" value="Стоп">
+    </div>
+
+</body>
+</html>
+
