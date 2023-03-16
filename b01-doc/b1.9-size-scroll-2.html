@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>verticalScrollWidth</title>
+
+    <style>
+		#box {
+			width: 300px;
+			height: 200px;
+			border: 25px solid #E8C48F;
+			padding: 20px;
+			font-size: 20px;
+			overflow: auto;
+		}
+    </style>
+</head>
+<body>
+
+	<div id="box" onmousemove="showInfo()">
+		Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate accusantium beatae velit officia, nihil asperiores, voluptates officiis mollitia numquam aperiam, et nostrum quisquam praesentium odio dolor modi quasi adipisci quo.
+		Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis ipsum commodi laboriosam necessitatibus voluptatibus voluptas inventore earum quam minima repellendus optio mollitia a ipsa, placeat, iure quibusdam velit ut ipsam.
+	</div>
+
+	<div id="info"></div>
+
+    <script>
+    
+		function showInfo() {
+			let elem = document.getElementById('box');
+			
+			let 
+				width = parseFloat(getComputedStyle(elem).width),
+				borderLeftWidth = parseFloat(getComputedStyle(elem).borderLeftWidth),
+				borderRightWidth = parseFloat(getComputedStyle(elem).borderRightWidth), 
+				paddingLeft = parseFloat(getComputedStyle(elem).paddingLeft), 
+				paddingRight = parseFloat(getComputedStyle(elem).paddingRight);
+
+			let verticalScrollWidth = (elem.offsetWidth - elem.clientWidth - borderLeftWidth - borderRightWidth);
+
+			document.getElementById('info').innerHTML = 
+				`elem.offsetWidth=${elem.offsetWidth}, ` +
+				`elem.clientWidth=${elem.clientWidth}, ` +
+				`Width=${width}, ` +
+				`borderLeftWidth=${borderLeftWidth}, ` +
+				`borderRightWidth=${borderRightWidth}, ` +
+				`paddingLeft=${paddingLeft}, ` +
+				`paddingRight=${paddingRight}, ` +
+				`verticalScrollWidth=${verticalScrollWidth}`;
+		}
+
+    </script>
+
+</body>
+</html>
+

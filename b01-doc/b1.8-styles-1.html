@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>showNotification</title>
+
+    <style>
+		.notification {
+			display: fixed;
+			width: 200px;
+			padding: 10px;
+			border: 1px solid blue;
+		}
+    </style>
+</head>
+<body>
+
+    <script>
+    
+        function showNotification({top = 0, right = 0, html, className, expire}) {
+
+			let notific = document.createElement('div');
+			
+			notific.className = "notification";
+			if (className) {
+				notific.classList.add(className);
+			}
+
+			notific.style.top = top + 'px';
+			notific.style.right = right + 'px';
+
+			notific.innerHTML = html;
+			
+			document.body.append(notific);
+
+			setTimeout(() => notific.remove(), expire);
+        }
+
+		showNotification({top: 10, right: 10, html: 'Hello', classname: 'welcome', expire: 1500});
+
+    </script>
+
+</body>
+</html>
+

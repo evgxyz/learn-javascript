@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>centered ball</title>
+
+    <style>
+		#field {
+			position: relative;
+			left: 150px;
+			top: 100px;
+			width: 200px;
+			border: 10px groove black;
+			background-color: #00FF00;
+		}
+
+		#ball {
+			position: absolute;
+			width: 40px;
+  			height: 40px;
+		}
+    </style>
+</head>
+<body>
+
+	<div id="field" onmousemove="moveBall()">
+		<img src="res/ball.svg" id="ball">. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+		. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+	</div>
+
+    <script>
+    
+		function moveBall() {
+			const field = document.getElementById('field');
+			const ball = document.getElementById('ball');
+
+			let cx = Math.round(field.clientWidth / 2);
+			let cy = Math.round(field.clientHeight / 2);
+
+			ball.style.left = (cx - Math.round(ball.offsetWidth / 2)) + 'px';
+			ball.style.top = (cy - Math.round(ball.offsetHeight / 2)) + 'px';
+		}
+
+    </script>
+
+</body>
+</html>
+
