@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>close</title>
+
+    <style>
+		.tree span {
+		  cursor: pointer;
+		}
+
+		.tree span:hover {
+		  color: blue;
+		}	
+	</style>
+</head>
+<body>
+
+	<ul id="tree" class="tree">
+		<li>Животные
+			<ul>
+			<li>Млекопитающие
+				<ul>
+				<li>Коровы</li>
+				<li>Ослы</li>
+				<li>Собаки</li>
+				<li>Тигры</li>
+				</ul>
+			</li>
+			<li>Другие
+				<ul>
+				<li>Змеи</li>
+				<li>Птицы</li>
+				<li>Ящерицы</li>
+				</ul>
+			</li>
+			</ul>
+		</li>
+		<li>Рыбы
+			<ul>
+			<li>Аквариумные
+				<ul>
+				<li>Гуппи</li>
+				<li>Скалярии</li>
+				</ul>
+			</li>
+			<li>Морские
+				<ul>
+				<li>Морская форель</li>
+				</ul>
+			</li>
+			</ul>
+		</li>
+	</ul>
+	
+	<script>
+		const tree = document.getElementById('tree');
+
+		for (let li of tree.querySelectorAll('li')) {
+			let span = document.createElement('span');
+			li.prepend(span);
+			span.append(span.nextSibling);
+		}
+	
+		tree.addEventListener('click', event => {
+			if (event.target.tagName == 'SPAN') {
+				let childrenContainer = event.target.parentNode.querySelector('ul');
+				if (childrenContainer) {	
+					childrenContainer.hidden = !childrenContainer.hidden;
+				}
+			}
+		});
+	</script>
+
+</body>
+</html>
+

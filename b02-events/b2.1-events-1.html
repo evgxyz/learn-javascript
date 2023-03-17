@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hide text</title>
+
+    <style>
+		#text.hidden {
+			display: none;
+		}
+    </style>
+</head>
+<body>
+
+	<input type="button" id="hider" value="Нажмите">
+
+  	<div id="text">Текст</div>
+
+  	<script>
+		document.getElementById('hider').onclick = function() {
+			document.getElementById('text').classList.toggle('hidden');
+		}
+  	</script>
+
+</body>
+</html>
+

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>move ball</title>
+
+    <style>
+		#field {
+			position: relative;
+			left: 150px;
+			top: 100px;
+			width: 200px;
+			border: 10px groove black;
+			background-color: #00FF00;
+		}
+
+		#field:hover {
+			cursor: pointer;
+		}
+
+		#ball {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 40px;
+  			height: 40px;
+			transition-property: left, top;
+			transition-duration: 0.5s;
+		}
+    </style>
+</head>
+<body>
+
+	<div id="field">
+		<img src="res/ball.svg" id="ball">. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+		. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+	</div>
+
+    <script>
+
+		const field = document.getElementById('field');
+		field.addEventListener('click', moveBall);
+    
+		function moveBall(event) {
+
+			console.log(event);
+			
+			const field = document.getElementById('field');
+			const ball = document.getElementById('ball');
+			const ballWidthHalf = Math.round(ball.offsetWidth / 2);
+			const ballHeightHalf = Math.round(ball.offsetHeight / 2);
+
+			let cx = event.offsetX;
+			let minX = ballWidthHalf;
+			let maxX = field.clientWidth - ballWidthHalf;
+			if (cx < minX) cx = minX;
+			else
+			if (cx > maxX) cx = maxX;
+
+			let cy = event.offsetY;
+			let minY = ballHeightHalf;
+			let maxY = field.clientHeight - ballHeightHalf;
+			if (cy < minY) cy = minY;
+			else
+			if (cy > maxY) cy = maxY;
+
+			setTimeout(() => {
+				ball.style.left = (cx - ballWidthHalf) + 'px';
+				ball.style.top = (cy - ballHeightHalf) + 'px'; 
+			});
+		}
+
+    </script>
+
+</body>
+</html>
+

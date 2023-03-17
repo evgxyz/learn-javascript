@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort Table</title>
+
+    <style>
+        #table {
+            border-collapse: collapse;
+        }
+
+        #table th, #table td {
+            padding: 5px;
+            border: 1px solid gray;
+        }
+
+        #table th {
+            font-weight: bold;
+            background-color: bisque;
+        }
+
+        #table tr[name="header"] {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+  <table id="table">
+    <thead>
+      <tr name="header">
+        <th data-type="number">Возраст</th>
+        <th data-type="string">Имя</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>5</td>
+        <td>Вася</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Петя</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>Женя</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>Маша</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Илья</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+
+      function sortTable(event) {
+
+          let table = document.getElementById('table');
+
+          let sortField = event.target.closest('TH');
+          let headLine = table.querySelector('TR');
+          let sortFieldIndex = Array.from(headLine.cells).findIndex(th => (th == sortField));
+          
+          let reverse = (
+              table.dataset.sortFieldIndex && table.dataset.sortFieldIndex == sortFieldIndex
+          ) ? true : false;
+
+          let fieldType = sortField.dataset.type ?? 'string';
+
+          let sortedRows = Array.from(table.rows)
+              .slice(1)
+              .sort((rowX, rowY) => {
+                  let valX = rowX.cells[sortFieldIndex].textContent;
+                  let valY = rowY.cells[sortFieldIndex].textContent;
+                  if (fieldType == 'number') {
+                      valX = +valX;
+                      valY = +valY;
+                  }
+                  return order(valX, valY, reverse);
+              });
+
+          table.tBodies[0].append(...sortedRows);
+
+          table.dataset.sortFieldIndex = reverse ? null : sortFieldIndex;
+      }
+
+      function order(a, b, reverse = false) {
+          let sign = (a == b) ? 0 : (a > b) ? 1 : -1;
+          if (reverse) sign *= -1;
+          return sign;
+      }
+
+      document.getElementById('table')
+        .querySelector('[name="header"]').addEventListener('click', sortTable);
+
+  </script>
+
+</body>
+</html>
+
