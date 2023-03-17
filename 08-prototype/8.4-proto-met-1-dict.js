@@ -19,4 +19,4 @@ for (let key in dictionary) {
 }
 
 // ваш метод toString в действии
-console.log(String(dictionary)); 
+console.log(String(dictionary));  
