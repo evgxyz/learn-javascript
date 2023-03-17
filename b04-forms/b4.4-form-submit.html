@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom prompt</title>
+
+<style>
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#cover-div {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  background-color: gray;
+  opacity: 0.3;
+}
+
+#prompt-form-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  display: none;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+#prompt-form-container:before {
+  display: inline-block;
+  height: 100%;
+  content: '';
+  vertical-align: middle;
+}
+
+#prompt-form {
+  display: inline-block;
+  padding: 7px;
+  width: 200px;
+  border: 1px solid black;
+  background-color: white;
+  vertical-align: middle;
+}
+
+#prompt-form input[name="text"] {
+  display: block;
+  margin: 5px;
+  width: 180px;
+}
+
+</style>
+
+</head>
+<body>
+
+  <h2>Кликните на кнопку ниже</h2>
+
+  <input type="button" value="Кликните, чтобы увидеть форму" id="show-button">
+
+  <div id="prompt-form-container">
+    <form id="prompt-form">
+      <div id="prompt-message"></div>
+      <input name="text" type="text">
+      <input type="submit" value="Ok">
+      <input type="button" name="cancel" value="Отмена">
+    </form>
+  </div>
+
+  <script>
+    
+    /**
+     * создаем затеняющий фон
+     */
+    function showCover() {
+      let coverDiv = document.createElement('div');
+      coverDiv.id = 'cover-div';
+      document.body.style.overflowY = 'hidden';
+      document.body.append(coverDiv);
+    }
+
+    /**
+     * убираем затеняющий фон
+     */
+    function hideCover() {
+      document.getElementById('cover-div').remove();
+      document.body.style.overflowY = '';
+    }
+
+    /**
+     * показ формы
+     */
+    function showPrompt(text, callback) {
+      
+      //создаем затеняющий фон
+      showCover();
+
+      let form = document.getElementById('prompt-form');
+      let formContainer = document.getElementById('prompt-form-container');
+      document.getElementById('prompt-message').innerHTML = text;
+      form.text.value = '';
+
+      //убираем фон, форму, вызываем колбэк функцию 
+      function complete(value) {
+        hideCover();
+        formContainer.style.display = 'none';
+        document.onkeydown = null;
+        callback(value);
+      }
+
+      //принятие формы
+      form.onsubmit = function() {
+        let value = form.text.value;
+        if (value == '') return false;
+        complete(value);
+        return false;
+      };
+
+      //отмена 
+      form.cancel.onclick = function() {
+        complete(null);
+      };
+
+      //отмена клафишей esc
+      document.onkeydown = function(event) {
+        if (event.key == 'Escape') {
+          complete(null);
+        }
+      };
+
+      // циклическая навигация по форме с помощью tab
+      let firstElem = form.elements[0];
+      let lastElem = form.elements[form.elements.length - 1];
+
+      lastElem.onkeydown = function(event) {
+        if (event.key == 'Tab' && !event.shiftKey) {
+          firstElem.focus();
+          return false;
+        }
+      };
+
+      firstElem.onkeydown = function(e) {
+        if (event.key == 'Tab' && event.shiftKey) {
+          lastElem.focus();
+          return false;
+        }
+      };
+
+      // фокус на поле ввода и показ контейнера с формой
+      form.elements.text.focus();
+      formContainer.style.display = 'block';
+    }
+
+    document.getElementById('show-button').onclick = function() {
+      showPrompt("Введите данные", function(value) {
+        alert("Вы ввели: " + value);
+      });
+    };
+
+  </script>
+
+</body>
+</html>
+
