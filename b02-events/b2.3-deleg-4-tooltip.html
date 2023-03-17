@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tooltip</title>
+
+    <style>
+        body {
+          height: 2000px;
+        }
+
+        .tooltip {
+          position: fixed;
+          padding: 10px 20px;
+          border: 1px solid #b3c9ce;
+          border-radius: 4px;
+          text-align: center;
+          font: italic 14px/1.3 sans-serif;
+          color: #333;
+          background: #fff;
+          box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
+        }
+    </style>
+</head>
+<body>
+
+  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. A in officia cumque harum eligendi perspiciatis, delectus error nobis aliquam voluptatem. Magnam ea facilis tempore cumque suscipit vitae enim eveniet laudantium ex sunt laborum ipsum, blanditiis quasi molestiae ducimus. Sit eaque cum autem debitis nulla consequatur itaque assumenda, quidem fuga, aliquam ullam, odit explicabo earum porro temporibus illum? Quis quam illum explicabo eaque fugit a distinctio, mollitia cumque iste corrupti quia minima consectetur, ut sed quae expedita tempora neque eum architecto similique omnis. Aliquid pariatur blanditiis beatae libero corporis esse quam aliquam itaque laborum culpa necessitatibus optio, totam velit eveniet quas iste quod quisquam consequatur. Veritatis rem a quidem. Quas ipsam sunt, illum molestias hic enim iusto non neque reiciendis animi cumque quod, quisquam autem? Molestiae ipsa, ut error eos ipsam culpa at aliquid enim quidem id iusto voluptatem veritatis. Exercitationem, vero? Facere culpa consequatur aliquam eaque repellat dolore nobis natus. Laboriosam dicta accusamus illo sequi dolorem. Repellendus facere fugiat officiis veniam pariatur, iure nostrum accusantium doloribus fugit quidem repudiandae sint reprehenderit, sed officia amet numquam blanditiis autem consectetur. Eaque, dicta odit aperiam earum nostrum sequi velit! Officiis, perspiciatis eaque, culpa delectus veritatis recusandae at deserunt quos repudiandae dignissimos repellat quod quo eveniet inventore. Consectetur ullam minima cupiditate ratione officia culpa laborum dicta aperiam itaque ipsa excepturi illo doloribus deserunt fugiat dolores esse, iste soluta corporis odio eius dolor nisi placeat dolorum consequuntur? Unde ex sit provident at repellat deleniti nesciunt tempora autem quisquam, obcaecati beatae repellendus, sunt, minus exercitationem tempore voluptatum nihil corrupti nam mollitia perferendis atque veritatis. Fugiat temporibus quae quasi. Repellendus doloribus, eveniet maxime nesciunt dolorem illo facilis sequi suscipit impedit. Qui aperiam voluptate sit excepturi perspiciatis sequi dolor eaque natus facere. Maxime voluptates libero incidunt deserunt repellendus laboriosam tempore ipsa, omnis eligendi alias illo ut, veniam, nobis eveniet et laborum nisi maiores ducimus voluptatum assumenda. Ducimus quod reprehenderit at dolorem nam magni vel iusto culpa dignissimos minus temporibus ad nobis, voluptates necessitatibus omnis cumque harum molestias fugiat obcaecati voluptatem aliquid veniam magnam nihil! Ipsum praesentium accusantium iste molestiae explicabo nobis consequuntur, ea dicta nulla sed reprehenderit libero, voluptates nesciunt. Id nisi dignissimos optio sit quia laboriosam aliquam delectus, unde accusamus provident dicta ipsum, quod porro blanditiis tenetur, commodi eveniet ut accusantium minus quae reiciendis. Dolorem pariatur illum officiis quis assumenda voluptas voluptatibus, ipsum in alias, nam esse, facere officia laborum necessitatibus error sint aliquam doloribus eum deleniti quia aut amet eius placeat! Ea placeat aspernatur, corporis, dolor autem natus iusto eaque amet voluptate impedit reprehenderit reiciendis dicta quaerat incidunt suscipit beatae officia aliquid fugiat recusandae libero unde molestias cumque? Quo itaque ab praesentium iste! Voluptate, modi dolorum! Temporibus libero, accusamus distinctio provident mollitia ea odit, magni, animi ex quae dolore blanditiis similique dolorum enim omnis. Nisi, sed facere minus omnis at tempora voluptates modi ad natus ut excepturi culpa provident voluptatum velit eaque quidem ipsam animi. Cum illum dolores quam! Nisi suscipit odio voluptates ea, magnam iure illo eius consequatur nam pariatur numquam fuga. Atque cum et voluptate fugiat culpa maiores aut. Et beatae eius exercitationem sed aut, quisquam perferendis, repudiandae vero aliquid accusantium eligendi ab error ea expedita facere, placeat aperiam a aliquam consequuntur? Aspernatur quae aliquid molestiae aliquam asperiores ipsum velit hic. Deleniti repellat ipsa, sit enim iste et illum, vel hic vitae culpa eveniet dicta repudiandae fuga nisi veniam accusantium dolor. Et ut at tempore dolores hic aspernatur vel. At dolor distinctio cum nulla? Rerum maiores tempore voluptatem facere ex doloremque. Quisquam eos suscipit, quas harum et culpa soluta itaque deserunt inventore at est ratione adipisci quaerat deleniti. Quam error praesentium similique, dicta nesciunt quas iure quasi vitae alias odio molestias itaque libero impedit sint magnam omnis, quia nihil modi facilis eum velit sapiente aliquid exercitationem! Non sunt sequi atque consequuntur aut cum, libero optio eos in quidem laboriosam cupiditate at animi dolor modi! Quidem molestias eos veritatis suscipit inventore. Reiciendis temporibus atque saepe beatae eveniet deserunt nemo consequuntur tempore autem esse libero sunt quod harum maiores ipsa, asperiores delectus cumque. Similique corporis maiores sapiente necessitatibus dolorum debitis tempora deserunt harum aspernatur suscipit natus labore iure quod, nemo esse at corrupti laudantium fugit porro amet a, voluptate sint delectus pariatur. Asperiores, numquam! Voluptatum, asperiores.</p>
+
+  <div style="text-align: right;">
+  <button data-tooltip="эта подсказка должна быть длиннее, чем элемент">Короткая кнопка</button><br>
+  <button data-tooltip="HTML<br>подсказка">Ещё кнопка</button>
+  </div>
+
+  <p>Прокрутите страницу, чтобы кнопки оказались у верхнего края, 
+    а затем проверьте, правильно ли выводятся подсказки.</p>
+
+  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore unde impedit dignissimos dolorum voluptates quisquam saepe quam, quaerat quidem corporis natus, totam incidunt, perferendis laudantium at facere. Eius sunt dicta sit, alias nihil aliquid impedit autem laborum omnis culpa unde minima quidem rem voluptatum eum facilis vitae, odit deserunt placeat consequuntur. Ut nam tempore quasi doloremque quisquam, voluptate repellendus? Molestiae dolorem autem beatae eligendi dignissimos in voluptatibus, ea ad ipsum cum enim doloribus dicta eius aut. Facilis saepe ullam commodi quidem adipisci, quae optio nobis beatae fuga, numquam magni deserunt tempora quasi assumenda temporibus, reiciendis quisquam eum ipsum perspiciatis fugiat iure sunt nam magnam. Quod quos facilis possimus natus sunt illo beatae eveniet deserunt. Quae, minus. Quia animi ipsam explicabo nostrum odio assumenda a. Et odit minima ducimus. Cum cumque deleniti aut totam voluptate dolores error exercitationem modi, ut nemo neque asperiores maiores! Optio provident temporibus eius? Reiciendis, harum alias? Repudiandae quas cumque tenetur minima obcaecati repellendus molestiae adipisci laborum eveniet quaerat exercitationem, necessitatibus perspiciatis ad sunt, praesentium ipsam nemo voluptas! Esse quaerat, ullam a fugit aliquam vel blanditiis quisquam. Dicta earum reprehenderit recusandae repudiandae, adipisci harum rerum enim tempore iusto minima assumenda ipsam eveniet ab non quod autem commodi quidem officiis nam! Blanditiis similique ratione hic provident iure modi vero, nesciunt minus voluptate optio. Fuga quo cupiditate illo corporis perferendis. Aspernatur laborum accusamus aliquam dignissimos repellendus iure dolor odio porro inventore sequi illum mollitia dolorum, quae quia minus debitis? Omnis cum a molestias labore placeat dolorem blanditiis ducimus reiciendis, nihil atque. Debitis omnis facilis consequuntur amet magnam, dolor doloribus ab, illum quae molestiae aperiam, accusantium porro dicta adipisci? Dignissimos numquam in odit illum reiciendis placeat at dolorum, mollitia enim quidem aliquam velit soluta libero a eaque, tempora, impedit doloribus perspiciatis sint nobis ut iusto et voluptatem! Repudiandae dolor autem doloribus, obcaecati architecto provident sapiente eius? Ipsam sunt accusamus illum molestias eligendi unde error voluptates aut, quam architecto fuga doloribus dolore necessitatibus, maiores, aperiam expedita dolor odit. Iste consequuntur optio quasi, animi eaque earum provident enim ipsam blanditiis tempora ullam molestias? Repudiandae temporibus praesentium quibusdam eius quo commodi blanditiis impedit, aliquam tempora dolores ipsa corporis obcaecati enim eos et? Asperiores harum amet nobis provident recusandae necessitatibus ipsam, soluta nulla consectetur, possimus, ea neque iure nam facilis voluptatem vitae eius tenetur. Vel corporis tenetur nulla at optio accusantium, ipsam accusamus voluptatibus et, amet aspernatur? Perspiciatis adipisci ipsum laborum odio maiores, consequuntur, ullam praesentium voluptatum quis harum suscipit earum. Ab temporibus aut animi vel vitae neque tenetur omnis asperiores natus corrupti, sequi odio quibusdam error. Deserunt esse totam non a dolores possimus officia, perspiciatis assumenda quis illo? Et voluptatum voluptate vitae praesentium corrupti, illo, dicta quibusdam cumque quam inventore nobis quidem omnis facilis nulla. Pariatur dicta, natus eum consectetur molestias asperiores ad vero atque repudiandae ut, incidunt, corrupti exercitationem optio. Hic consequatur ea vero eos alias excepturi accusamus quaerat provident? Ipsam perspiciatis saepe aperiam adipisci numquam molestias. Vitae dolores quo officia, ex consequuntur fuga mollitia accusamus quis animi impedit amet libero suscipit, magnam, molestiae autem! Minus incidunt porro voluptatibus, eveniet quia est cum a in iure repellat rerum eius illo, accusantium quidem architecto quas magni praesentium officiis earum animi. Recusandae ipsam, reiciendis eaque placeat expedita enim. Et dolor voluptate exercitationem minus dolore temporibus corporis itaque nostrum dolores praesentium, quis repellat nihil necessitatibus ipsam omnis eveniet ipsum odio earum laboriosam in sit! Molestiae odit maxime aliquid fugit omnis voluptas, fuga quaerat, repellendus architecto quod sunt debitis molestias eligendi quis dolores, magni commodi iure iste hic qui totam voluptate impedit repudiandae autem. Iusto quasi, voluptates ipsa doloremque perspiciatis quia sunt? Vel, et eum fugit, sit neque iste quasi illum cumque ea omnis in quas doloribus pariatur magni quos. Beatae quod cupiditate ratione ipsum, perspiciatis quibusdam, ipsa id corporis temporibus nam hic labore. Quae aliquam possimus odit, repudiandae facere aliquid quisquam beatae. Reprehenderit nihil culpa veniam ducimus ad, laboriosam odit tempore, debitis sapiente atque fugiat eius quasi necessitatibus ipsum explicabo quo quis pariatur excepturi ex facilis quia commodi officia? Vero harum debitis dignissimos ea tenetur temporibus, totam magni saepe unde praesentium laboriosam sunt in velit impedit officiis consequatur doloribus laudantium nihil quos ipsum facilis tempora facere. Pariatur tenetur delectus asperiores itaque laboriosam voluptatem veniam exercitationem ut iure, nam magni aut voluptatum voluptates! Velit nisi unde dolorem. Esse culpa vitae, error aliquid fugiat a sunt nobis at, autem quisquam, nisi voluptates iusto quos fugit excepturi blanditiis cumque quo eius fuga et. Sit rem repudiandae ea aut, sed ducimus amet, est incidunt at voluptates architecto minima, nulla laudantium dignissimos quo facilis dolorem animi voluptatum earum repellendus doloremque aliquid molestias ratione. Incidunt voluptatum animi, odit accusamus iure accusantium explicabo veritatis cumque, corrupti aut assumenda? Commodi eius velit id est, earum blanditiis consequatur? Eum, excepturi vel. Sapiente, esse soluta minima officiis ipsa corporis beatae ab quo nisi inventore, omnis similique repellendus, unde laborum facilis? Consequuntur nulla officia eos velit impedit voluptate illo eius quam laboriosam odio rerum autem tempora possimus pariatur facilis accusantium quaerat, est voluptatibus quibusdam excepturi nobis ut delectus error! Eligendi impedit quas inventore at nesciunt consequatur earum, dolores molestiae quaerat, ab unde autem velit dolorum eum cumque, ut porro repellendus laborum sunt aut perferendis. Dignissimos eius nulla itaque voluptatibus quam recusandae incidunt ab dolores aperiam dolor voluptatum, expedita veritatis veniam minus ipsam architecto fuga vero reprehenderit laboriosam blanditiis id repellat, magnam quisquam. Tempore laboriosam quis cupiditate unde porro delectus ducimus at quos, voluptates provident! Vel suscipit placeat quas odit, nemo adipisci officiis accusantium? Eligendi molestias architecto atque. Consequatur voluptate quisquam delectus molestias ea a ad rem veniam suscipit possimus earum obcaecati, dicta reiciendis vero in laborum. Quae placeat eos quis doloremque non minus accusamus recusandae, mollitia delectus, fugit quasi totam dolorum facilis quas? Sapiente quas animi unde sunt ullam, nostrum blanditiis labore nulla exercitationem. Optio voluptas soluta dolores asperiores fugit. Repellendus similique impedit ducimus corrupti quae assumenda aliquid vel corporis deleniti sit necessitatibus voluptatibus nobis totam rerum ab, atque laudantium iusto. Voluptas in voluptates facere cumque est perspiciatis consequuntur, temporibus debitis, optio vitae, atque laborum veniam!</p>
+
+  <script>
+
+    let tooltipElem;
+
+    document.body.addEventListener('mouseover', event => {
+      
+      let target = event.target;
+      let tooltipHtml = target.dataset.tooltip;
+      if (!tooltipHtml) return;
+
+      tooltipElem = document.createElement('div');
+      tooltipElem.className = 'tooltip';
+      tooltipElem.innerHTML = tooltipHtml;
+      document.body.append(tooltipElem);
+
+      let coords = target.getBoundingClientRect();
+
+      let left = coords.left + (target.offsetWidth - tooltipElem.offsetWidth) / 2;
+      if (left < 0) left = 0;
+
+      let top = coords.top - tooltipElem.offsetHeight - 5;
+      if (top < 0) {
+        top = coords.top + target.offsetHeight + 5;
+      }
+
+      tooltipElem.style.left = left + 'px';
+      tooltipElem.style.top = top + 'px';
+    });
+
+    document.body.addEventListener('mouseout', event => {
+      if (tooltipElem) {
+        tooltipElem.remove();
+        tooltipElem = null;
+      }
+    });
+  </script>
+
+</body>
+</html>
+
