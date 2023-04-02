@@ -10,4 +10,4 @@ function f() {
     wait().then((res) => console.log(res));
 }
 
-f();
+f(); 
